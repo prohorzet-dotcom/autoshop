@@ -16,9 +16,19 @@
     {% for category in categories %}
     <div class="col-md-2 col-4 mb-3">
         <a href="/catalog/?category={{ category.slug }}" class="text-decoration-none">
-            <div class="card text-center p-3">
-                <div style="font-size:2rem;">⚙️</div>
-                <small class="text-dark">{{ category.name }}</small>
+            <div class="card text-center p-3 h-100 border-0 shadow-sm" style="transition:0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                <div style="font-size:2rem;">
+    {% if category.slug == 'dvigatel' %}&#128295;
+    {% elif category.slug == 'tormoza' %}&#128721;
+    {% elif category.slug == 'podveska' %}&#9881;
+    {% elif category.slug == 'elektrika' %}&#9889;
+    {% elif category.slug == 'filtry' %}&#128299;
+    {% elif category.slug == 'masla' %}&#128674;
+    {% else %}&#9881;
+    {% endif %}
+</div>
+                </div>
+                <small class="text-dark fw-bold mt-2">{{ category.name }}</small>
             </div>
         </a>
     </div>
