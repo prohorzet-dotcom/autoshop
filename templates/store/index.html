@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}AutoShop — Главная{% endblock %}
+
+{% block content %}
+<div class="p-5 mb-4 rounded-3" style="background: linear-gradient(135deg, #1a1a2e, #16213e); color: white;">
+    <div class="container-fluid py-3">
+        <h1 class="display-5 fw-bold">🔧 Запчасти для любого авто</h1>
+        <p class="col-md-8 fs-4">Более 50 000 товаров в наличии. Быстрая доставка по всей России.</p>
+        <a href="/catalog/" class="btn btn-danger btn-lg">Перейти в каталог</a>
+    </div>
+</div>
+
+<h3 class="mb-3">Категории товаров</h3>
+<div class="row mb-4">
+    {% for category in categories %}
+    <div class="col-md-2 col-4 mb-3">
+        <a href="/catalog/?category={{ category.slug }}" class="text-decoration-none">
+            <div class="card text-center p-3">
+                <div style="font-size:2rem;">⚙️</div>
+                <small class="text-dark">{{ category.name }}</small>
+            </div>
+        </a>
+    </div>
+    {% empty %}
+    <p class="text-muted">Категории пока не добавлены.</p>
+    {% endfor %}
+</div>
+
+<h3 class="mb-3">Популярные товары</h3>
+<div class="row">
+    {% for product in products %}
+    <div class="col-md-3 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="text-muted small">{{ product.category.name }}</p>
+                <p class="card-text">{{ product.description|truncatechars:80 }}</p>
+                <h4 class="text-danger">{{ product.price }} ₽</h4>
+            </div>
+            <div class="card-footer">
+                <a href="/product/{{ product.pk }}/" class="btn btn-outline-dark btn-sm w-100">Подробнее</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-muted">Товары пока не добавлены.</p>
+    {% endfor %}
+</div>
+{% endblock %}

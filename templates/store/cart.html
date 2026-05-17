@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Корзина{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">🛒 Корзина</h2>
+
+{% if items %}
+<div class="table-responsive">
+    <table class="table table-bordered align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>Товар</th>
+                <th>Цена</th>
+                <th>Количество</th>
+                <th>Сумма</th>
+                <th>Удалить</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td><a href="/product/{{ item.product.pk }}/">{{ item.product.name }}</a></td>
+                <td>{{ item.product.price }} ₽</td>
+                <td>{{ item.quantity }} шт.</td>
+                <td>{{ item.subtotal }} ₽</td>
+                <td><a href="/cart/remove/{{ item.product.pk }}/" class="btn btn-sm btn-outline-danger">✕</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-end fw-bold">Итого:</td>
+                <td colspan="2" class="fw-bold text-danger fs-5">{{ total }} ₽</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<div class="text-end mt-3">
+    <a href="/catalog/" class="btn btn-outline-dark me-2">← Продолжить покупки</a>
+    <a href="/checkout/" class="btn btn-danger btn-lg">Оформить заказ</a>
+</div>
+
+{% else %}
+<div class="text-center py-5">
+    <div style="font-size:4rem;">🛒</div>
+    <h4 class="text-muted mt-3">Корзина пуста</h4>
+    <a href="/catalog/" class="btn btn-danger mt-3">Перейти в каталог</a>
+</div>
+{% endif %}
+{% endblock %}

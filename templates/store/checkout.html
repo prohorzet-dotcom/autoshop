@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Оформление заказа{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2 class="mb-4">📋 Оформление заказа</h2>
+        <div class="card p-4">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Адрес доставки</label>
+                    <textarea name="address" class="form-control" rows="3" placeholder="Введите адрес доставки" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-danger w-100 btn-lg">✅ Подтвердить заказ</button>
+                <a href="/cart/" class="btn btn-outline-dark w-100 mt-2">← Назад в корзину</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

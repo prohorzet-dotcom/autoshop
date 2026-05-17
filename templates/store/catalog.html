@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Каталог товаров{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Каталог запчастей</h2>
+
+<div class="row mb-3">
+    {% for category in categories %}
+    <div class="col-auto mb-2">
+        <a href="/catalog/?category={{ category.slug }}" class="btn btn-outline-dark btn-sm">{{ category.name }}</a>
+    </div>
+    {% endfor %}
+    <div class="col-auto mb-2">
+        <a href="/catalog/" class="btn btn-dark btn-sm">Все товары</a>
+    </div>
+</div>
+
+<div class="row">
+    {% for product in products %}
+    <div class="col-md-3 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <span class="badge bg-secondary mb-2">{{ product.category.name }}</span>
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text text-muted small">{{ product.description|truncatechars:100 }}</p>
+                <h4 class="text-danger">{{ product.price }} ₽</h4>
+                {% if product.stock > 0 %}
+                    <small class="text-success">✅ В наличии: {{ product.stock }} шт.</small>
+                {% else %}
+                    <small class="text-danger">❌ Нет в наличии</small>
+                {% endif %}
+            </div>
+            <div class="card-footer d-flex gap-2">
+                <a href="/product/{{ product.pk }}/" class="btn btn-outline-dark btn-sm flex-fill">Подробнее</a>
+                <a href="/cart/add/{{ product.pk }}/" class="btn btn-danger btn-sm flex-fill">В корзину</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-muted">Товары не найдены.</p>
+    {% endfor %}
+</div>
+{% endblock %}
