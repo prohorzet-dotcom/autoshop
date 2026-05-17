@@ -18,13 +18,14 @@
         <a href="/catalog/?category={{ category.slug }}" class="text-decoration-none">
             <div class="card text-center p-3 h-100 border-0 shadow-sm" style="transition:0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                 <div style="font-size:2rem;">
-    {% if category.slug == 'dvigatel' %}&#128295;
-    {% elif category.slug == 'tormoza' %}&#128721;
-    {% elif category.slug == 'podveska' %}&#9881;
-    {% elif category.slug == 'elektrika' %}&#9889;
-    {% elif category.slug == 'filtry' %}&#128299;
-    {% elif category.slug == 'masla' %}&#128674;
-    {% else %}&#9881;
+    {% if category.slug == 'dvigatel' %}<i class="bi bi-gear-fill" style="font-size:2rem;color:#e94560;"></i>
+{% elif category.slug == 'tormoza' %}<i class="bi bi-disc-fill" style="font-size:2rem;color:#e94560;"></i>
+{% elif category.slug == 'podveska' %}<i class="bi bi-tools" style="font-size:2rem;color:#e94560;"></i>
+{% elif category.slug == 'elektrika' %}<i class="bi bi-lightning-fill" style="font-size:2rem;color:#e94560;"></i>
+{% elif category.slug == 'filtry' %}<i class="bi bi-funnel-fill" style="font-size:2rem;color:#e94560;"></i>
+{% elif category.slug == 'masla' %}<i class="bi bi-droplet-fill" style="font-size:2rem;color:#e94560;"></i>
+{% else %}<i class="bi bi-box" style="font-size:2rem;color:#e94560;"></i>
+{% endif %}
     {% endif %}
                 </div>
                 <small class="text-dark fw-bold mt-2">{{ category.name }}</small>
