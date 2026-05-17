@@ -1,18 +1,30 @@
 {% extends 'base.html' %}
 
-{% block title %}Вход{% endblock %}
+{% block title %}Вход — AutoShop{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
+<div class="row justify-content-center mt-5">
     <div class="col-md-4">
-        <div class="card p-4">
-            <h3 class="mb-4 text-center">Вход в аккаунт</h3>
+        <div class="card shadow-lg border-0 p-4">
+            <div class="text-center mb-4">
+                <h2 style="color:#e94560; font-weight:bold;">🔧 AutoShop</h2>
+                <h4 class="mt-2">Вход в аккаунт</h4>
+            </div>
             <form method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-danger w-100">Войти</button>
+                {% for field in form %}
+                <div class="mb-3">
+                    <input type="{{ field.field.widget.input_type }}" 
+                           name="{{ field.html_name }}"
+                           class="form-control form-control-lg" 
+                           placeholder="{{ field.label }}"
+                           autocomplete="off">
+                </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-danger w-100 btn-lg mt-2">Войти</button>
             </form>
-            <p class="text-center mt-3">Нет аккаунта? <a href="/register/">Зарегистрироваться</a></p>
+            <hr>
+            <p class="text-center text-muted mb-0">Нет аккаунта? <a href="/register/" style="color:#e94560;">Зарегистрироваться</a></p>
         </div>
     </div>
 </div>
