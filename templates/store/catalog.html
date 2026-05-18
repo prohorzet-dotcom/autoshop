@@ -20,17 +20,16 @@
     {% for product in products %}
     <div class="col-md-3 mb-4">
         <div class="card h-100 border-0 shadow-sm" style="border-radius:12px; overflow:hidden; transition:0.3s;" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow=''">
-            <div style="background:linear-gradient(135deg,#f8f9fa,#e9ecef); height:160px; display:flex; align-items:center; justify-content:center;">
-                <span style="font-size:4rem;">
-                    {% if product.category.slug == 'dvigatel' %}🔧
-                    {% elif product.category.slug == 'tormoza' %}🛑
-                    {% elif product.category.slug == 'podveska' %}⚙️
-                    {% elif product.category.slug == 'elektrika' %}⚡
-                    {% elif product.category.slug == 'filtry' %}🔩
-                    {% elif product.category.slug == 'masla' %}🛢️
-                    {% else %}🔧
-                    {% endif %}
-                </span>
+            <i class="
+    {% if product.category.slug == 'dvigatel' %}bi bi-gear-fill
+    {% elif product.category.slug == 'tormoza' %}bi bi-disc-fill
+    {% elif product.category.slug == 'podveska' %}bi bi-tools
+    {% elif product.category.slug == 'elektrika' %}bi bi-lightning-fill
+    {% elif product.category.slug == 'filtry' %}bi bi-funnel-fill
+    {% elif product.category.slug == 'masla' %}bi bi-droplet-fill
+    {% else %}bi bi-box
+    {% endif %}
+" style="font-size:4rem;color:#e94560;"></i>
             </div>
             <div class="card-body p-3">
                 <span class="badge mb-2" style="background:#e94560;">{{ product.category.name }}</span>
