@@ -7,7 +7,7 @@ SECRET_KEY = 'django-insecure-autoshop-diploma-key-12345'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*'] 
-CSRF_TRUSTED_ORIGINS = ['https://preacher-late-craving.ngrok-free.dev']
+CSRF_TRUSTED_ORIGINS = ['https://autoshop-production-f5fb.up.railway.app', 'https://*.up.railway.app']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
